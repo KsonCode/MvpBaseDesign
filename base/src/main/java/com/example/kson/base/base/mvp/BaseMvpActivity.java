@@ -20,7 +20,9 @@ public abstract class BaseMvpActivity<M extends IBaseModel,P extends BasePresent
                 presenter.attach(model,this);
             }
         }
+
     }
+
 
     @Override
     protected void onDestroy() {

@@ -5,6 +5,9 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 /**
  * Author:kson
@@ -15,7 +18,7 @@ import retrofit2.Retrofit;
 public class RetrofitUtils {
 
     private static volatile RetrofitUtils retrofitUtils;
-    private OkHttpClient okHttpClient = null;
+    private OkHttpClient okHttpClient;
 
     private RetrofitUtils() {
 
@@ -25,6 +28,7 @@ public class RetrofitUtils {
                 .readTimeout(5, TimeUnit.SECONDS)
                 .writeTimeout(5, TimeUnit.SECONDS)
                 .connectTimeout(5, TimeUnit.SECONDS)
+                .addInterceptor(new HeaderInterceptor())//自定义头部拦截器
                 .addInterceptor(httpLoggingInterceptor)
                 .build();
 
@@ -33,6 +37,9 @@ public class RetrofitUtils {
 
     public <T> T createApi(String baseurl,Class<T> clz){
         Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())//把json数据（或者xml，protbuf等）转换成对象
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(SimpleXmlConverterFactory.create())
                 .client(okHttpClient)
                 .baseUrl(baseurl).build();
 

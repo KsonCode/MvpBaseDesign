@@ -24,7 +24,7 @@ public abstract class BasePresenter<M, V> {
      */
     public void attach(M mModel, V mView) {
         this.mModel = mModel;
-        weakReference = new WeakReference<>(this.mView);
+        weakReference = new WeakReference<>(mView);
         this.mView = weakReference.get();
     }
 

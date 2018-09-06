@@ -11,4 +11,5 @@ public class Contants {
     public static final String BASE_DEBUG_URL = "http://192.128.1.2/";
 
     public static final String GD_BASE_URL = "http://197.3.2.5";//广东服务器
+
 }
