@@ -23,6 +23,8 @@ public class HeaderInterceptor implements Interceptor {
         builder.addHeader("ak", SpUtils.getString("0110010010000"));
 //        builder.addHeader("cache-control","max-age: 1000");
 
+        builder.addHeader("userId",SpUtils.getString("userId"));
+        builder.addHeader("sessionId",SpUtils.getString("sessionId"));
         return chain.proceed(request);
     }
 }

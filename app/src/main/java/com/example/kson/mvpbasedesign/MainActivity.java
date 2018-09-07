@@ -55,6 +55,8 @@ public class MainActivity extends BaseMvpActivity<UploadContract.IUploadModel, U
     protected void initData() {
         super.initData();
         list = new ArrayList<>();
+        System.out.println(android.util.Base64.encodeToString("123456".getBytes(), android.util.Base64.DEFAULT));
+
     }
 
     /**
@@ -191,8 +193,5 @@ public class MainActivity extends BaseMvpActivity<UploadContract.IUploadModel, U
 
     }
 
-    @Override
-    protected void init() {
 
-    }
 }

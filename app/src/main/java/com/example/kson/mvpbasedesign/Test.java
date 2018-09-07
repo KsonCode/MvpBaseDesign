@@ -4,6 +4,7 @@ package com.example.kson.mvpbasedesign;
 import com.example.kson.mvpbasedesign.entity.user.UploadEntity;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -236,6 +237,12 @@ public class Test {
 
 
 
+        toBase64("nigneongeiogneongeingiengeongoe");
+    }
+
+
+    public static void toBase64(String msg){
+        System.out.println(android.util.Base64.encode(msg.getBytes(), android.util.Base64.DEFAULT));
     }
 
 
