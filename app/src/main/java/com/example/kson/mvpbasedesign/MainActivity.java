@@ -58,6 +58,8 @@ public class MainActivity extends BaseMvpActivity<UploadContract.IUploadModel, U
         System.out.println(android.util.Base64.encodeToString("123456".getBytes(), android.util.Base64.DEFAULT));
 
         //master分支代码
+        //master2
+
     }
 
     /**
