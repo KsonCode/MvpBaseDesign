@@ -17,14 +17,16 @@ import okhttp3.Response;
 public class HeaderInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
-
-        Request request = chain.request();
+        
+        Request request = chain.request();//原始请求对象
         Request.Builder builder = request.newBuilder();
         builder.addHeader("ak", SpUtils.getString("0110010010000"));
 //        builder.addHeader("cache-control","max-age: 1000");
-
-        builder.addHeader("userId",SpUtils.getString("userId"));
-        builder.addHeader("sessionId",SpUtils.getString("sessionId"));
-        return chain.proceed(request);
+        builder.addHeader("userId", SpUtils.getString("userId"));
+        builder.addHeader("sessionId", SpUtils.getString("sessionId"));
+        builder.addHeader("versionCode", SpUtils.getString("sessionId"));
+        builder.addHeader("deviceId", SpUtils.getString("sessionId"));
+        builder.addHeader("appKey", SpUtils.getString("sessionId"));
+        return chain.proceed(builder.build());
     }
 }

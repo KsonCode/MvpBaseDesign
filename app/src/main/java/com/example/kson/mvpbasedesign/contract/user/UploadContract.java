@@ -25,8 +25,6 @@ public interface UploadContract {
         public IUploadModel getmModel() {
             return new UploadModel();
         }
-
-
         public abstract void upload(String s, File file);
     }
 
